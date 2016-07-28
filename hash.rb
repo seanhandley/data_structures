@@ -18,6 +18,12 @@ module DataStructures
       @values[hash_location(k)] = v
     end
 
+    def delete(k)
+      return false unless @keys.include?(k)
+      @values[hash_location(k)] = nil
+      @keys.delete(k)
+    end
+
     def values
       @keys.map{|k| self[k]}
     end
@@ -34,6 +40,11 @@ hash = DataStructures::Hash.new
 hash["foo"] = "bar"
 hash["bar"] = "baz"
 p hash["foo"]
+
+p hash.keys
+p hash.values
+
+p hash.delete("bar")
 
 p hash.keys
 p hash.values
