@@ -31,18 +31,3 @@ module LinkedList
     end
   end
 end
-
-list = LinkedList::Element.new
-[2, 4, 6, 8, 10].each do |i|
-  list.append(i)
-end
-
-list.traverse -> (e) { p e }
-
-
-p list.exists?(10)
-list.remove
-
-list.traverse -> (e) { p e }
-
-p list.exists?(10)
