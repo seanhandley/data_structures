@@ -20,26 +20,26 @@ class Queue
   end
 end
 
-def input
-  (1..1000).to_a
-end
+# def input
+#   (1..1000).to_a
+# end
 
-def shuffled_input
-  input.shuffle
-end
+# def shuffled_input
+#   input.shuffle
+# end
 
-def test
-  queue = Queue.new
-  input = shuffled_input
-  input.each do |element|
-    queue.enqueue element
-  end
-  output = []
-  while(el = queue.dequeue)
-    output << el
-  end
-  raise "Fail!" unless input == output
-  puts "Success!"
-end
+# def test
+#   queue = Queue.new
+#   input = shuffled_input
+#   input.each do |element|
+#     queue.enqueue element
+#   end
+#   output = []
+#   while(el = queue.dequeue)
+#     output << el
+#   end
+#   raise "Fail!" unless input == output
+#   puts "Success!"
+# end
 
-test
+# test

@@ -36,15 +36,15 @@ module DataStructures
   end
 end
 
-hash = DataStructures::Hash.new
-hash["foo"] = "bar"
-hash["bar"] = "baz"
-p hash["foo"]
+# hash = DataStructures::Hash.new
+# hash["foo"] = "bar"
+# hash["bar"] = "baz"
+# p hash["foo"]
 
-p hash.keys
-p hash.values
+# p hash.keys
+# p hash.values
 
-p hash.delete("bar")
+# p hash.delete("bar")
 
-p hash.keys
-p hash.values
+# p hash.keys
+# p hash.values

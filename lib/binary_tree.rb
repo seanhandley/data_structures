@@ -34,33 +34,33 @@ module BinaryTree
   end
 end
 
-def input
-  sorted_input.shuffle
-end
+# def input
+#   sorted_input.shuffle
+# end
 
-def sorted_input
-  (1..1000).to_a
-end
+# def sorted_input
+#   (1..1000).to_a
+# end
 
-def tree
-  input = input.shuffle
+# def tree
+#   input = input.shuffle
 
-  tree = BinaryTree::Node.new
+#   tree = BinaryTree::Node.new
 
-  input.each do |i|
-    tree.insert(i)
-  end
+#   input.each do |i|
+#     tree.insert(i)
+#   end
 
-  tree.traverse
-end
+#   tree.traverse
+# end
 
-def test
-  s = Time.now
-  iterations = 20_000
-  iterations.times { raise "Fail!" unless tree = sorted_input }
-  d = Time.now - s
-  average = "%8f" % (d / iterations.to_f)
-  puts "Binary tree has correctly ordered elements #{iterations} times in #{d} seconds. Average time per sort: #{average} seconds."
-end
+# def test
+#   s = Time.now
+#   iterations = 20_000
+#   iterations.times { raise "Fail!" unless tree = sorted_input }
+#   d = Time.now - s
+#   average = "%8f" % (d / iterations.to_f)
+#   puts "Binary tree has correctly ordered elements #{iterations} times in #{d} seconds. Average time per sort: #{average} seconds."
+# end
 
-test
+# test

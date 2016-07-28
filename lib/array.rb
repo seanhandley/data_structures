@@ -55,22 +55,22 @@ module DataStructures
   end
 end
 
-array = DataStructures::Array.new
-array.push("banana")
-array.push("apple")
-array.push("plum")
-array.push("pear")
+# array = DataStructures::Array.new
+# array.push("banana")
+# array.push("apple")
+# array.push("plum")
+# array.push("pear")
 
-p array.count
+# p array.count
 
-p array
+# p array
 
-array[1] = "strawberry"
+# array[1] = "strawberry"
 
-p array
+# p array
 
-array.delete(1)
+# array.delete(1)
 
-p array
+# p array
 
-p array[1]
+# p array[1]
