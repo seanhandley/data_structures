@@ -1,7 +1,6 @@
 module BinaryTree
   class Node
-    attr_reader :element
-    attr_accessor :left, :right
+    attr_accessor :element, :left, :right
 
     def initialize(e=nil)
       @element = e
@@ -28,39 +27,20 @@ module BinaryTree
 
     def insert_element(node, e)
       (node.element = e and return) unless node.element
-      n = node.element > e ? node.left : node.right
-      n ? insert_element(node.left, e) : node.left = BinaryTree::Node.new(e)
+
+      if node.element > e
+        if node.left
+          insert_element(node.left, e)
+        else
+          node.left = BinaryTree::Node.new(e)
+        end
+      else
+        if node.right
+          insert_element(node.right, e)
+        else
+          node.right = BinaryTree::Node.new(e)
+        end
+      end
     end
   end
 end
-
-# def input
-#   sorted_input.shuffle
-# end
-
-# def sorted_input
-#   (1..1000).to_a
-# end
-
-# def tree
-#   input = input.shuffle
-
-#   tree = BinaryTree::Node.new
-
-#   input.each do |i|
-#     tree.insert(i)
-#   end
-
-#   tree.traverse
-# end
-
-# def test
-#   s = Time.now
-#   iterations = 20_000
-#   iterations.times { raise "Fail!" unless tree = sorted_input }
-#   d = Time.now - s
-#   average = "%8f" % (d / iterations.to_f)
-#   puts "Binary tree has correctly ordered elements #{iterations} times in #{d} seconds. Average time per sort: #{average} seconds."
-# end
-
-# test
