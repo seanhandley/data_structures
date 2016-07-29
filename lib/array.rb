@@ -9,10 +9,12 @@ module DataStructures
     end
 
     def delete(i)
+      return false unless count-1 >= i
       @array.slice!(*element_position_and_length(i))
     end
 
     def [](i)
+      return nil unless count-1 >= i
       start, length = element_position_and_length(i)
       @array[start+1, length-2]
     end
@@ -27,11 +29,26 @@ module DataStructures
       @array.scan(/\[/).count
     end
 
+    def inspect
+      output = "["
+      count.times do |i|
+        output << "\"#{self[i]}\", "
+      end
+      output.slice!(output.length-2, 2) if count > 0
+      output << "]"
+      output
+    end
+
+    def to_s
+      inspect
+    end
+
     private
 
     def element_position_and_length(i)
       start  = position(/\[/, i)
       finish = position(/\]/, i)
+      return [@array.length,0] if [start,finish].any?{|e| e.nil?}
       [start, finish-start+1]
     end
 
@@ -42,35 +59,5 @@ module DataStructures
       end
       res[i]
     end
-
-    def inspect
-      output = "["
-      count.times do |i|
-        output << "\"#{self[i]}\", "
-      end
-      output.slice!(output.length-2, 2) if count > 0
-      output << "]"
-      output
-    end
   end
 end
-
-# array = DataStructures::Array.new
-# array.push("banana")
-# array.push("apple")
-# array.push("plum")
-# array.push("pear")
-
-# p array.count
-
-# p array
-
-# array[1] = "strawberry"
-
-# p array
-
-# array.delete(1)
-
-# p array
-
-# p array[1]
