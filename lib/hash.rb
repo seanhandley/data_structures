@@ -28,6 +28,20 @@ module DataStructures
       @keys.map{|k| self[k]}
     end
 
+    def inspect
+      res = "{"
+      keys.each do |key|
+        res << "\"#{key}\" => \"#{self[key]}\", "
+      end
+      res.slice!(res.length-2, 2) if keys.count > 0
+      res << "}"
+      res
+    end
+
+    def to_s
+      inspect
+    end
+
     private
 
     def hash_location(k)
@@ -35,16 +49,3 @@ module DataStructures
     end
   end
 end
-
-# hash = DataStructures::Hash.new
-# hash["foo"] = "bar"
-# hash["bar"] = "baz"
-# p hash["foo"]
-
-# p hash.keys
-# p hash.values
-
-# p hash.delete("bar")
-
-# p hash.keys
-# p hash.values
