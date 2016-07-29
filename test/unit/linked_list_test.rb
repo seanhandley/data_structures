@@ -3,7 +3,7 @@ require 'test_helper'
 class LinkedListTest < Minitest::Test
   def setup
     @items = [2,4,6,8]
-    @list  = LinkedList::Element.new
+    @list  = DataStructures::LinkedList.new
   end
 
   def test_empty

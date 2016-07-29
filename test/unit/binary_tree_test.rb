@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BinaryTreeTest < Minitest::Test
   def setup
-    @tree = BinaryTree::Node.new
+    @tree = DataStructures::BinaryTree.new
     @items = (1..100).to_a.shuffle
   end
 

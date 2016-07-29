@@ -4,7 +4,7 @@ class QueueTest < Minitest::Test
   def setup
     @items    = (1..100).to_a
     @shuffled = @items.shuffle
-    @queue    = Queue.new 
+    @queue    = DataStructures::Queue.new 
   end
 
   def test_empty

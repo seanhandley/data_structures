@@ -3,7 +3,7 @@ require 'test_helper'
 class StackTest < Minitest::Test
   def setup
     @items    = (1..100).to_a
-    @stack    = Stack.new
+    @stack    = DataStructures::Stack.new
   end
 
   def test_empty
