@@ -21,4 +21,9 @@ class BinaryTreeTest < Minitest::Test
     @items.each {|i| @tree.insert i}
     assert_equal @tree.traverse, @items.sort
   end
+
+  # def test_draw
+  #   @items.each {|i| @tree.insert i}
+  #   @tree.draw
+  # end
 end
