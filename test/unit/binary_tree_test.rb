@@ -22,12 +22,14 @@ class BinaryTreeTest < Minitest::Test
     assert_equal @tree.traverse, @items.sort
   end
 
-  # def test_draw
-  #   @items.each {|i| @tree.insert(i); @tree.draw}
-  # end
+  def test_draw
+    @items = [5, 8, 6, 10, 3, 9, 7, 2, 1, 4]
+    @items.each {|i| @tree.insert(i)}
+    @tree.draw
+  end
 
   # def test_animate
   #   @items.each {|i| @tree.insert(i); @tree.draw}
-  #   @tree.animate
+  #   @tree.animate("./tree.gif")
   # end
 end

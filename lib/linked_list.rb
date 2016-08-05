@@ -5,6 +5,8 @@ module DataStructures
     end
     
     class Element
+      include DataStructures::Drawing::LinkedList
+
       attr_accessor :link, :value
 
       def append(e)

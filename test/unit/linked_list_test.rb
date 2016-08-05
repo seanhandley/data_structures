@@ -37,6 +37,13 @@ class LinkedListTest < Minitest::Test
     assert_equal [1,2], list_contents(@list)
   end
 
+  def test_draw
+    @list.append(1)
+    @list.append(2)
+    @list.append(3)  
+    @list.draw
+  end
+
   private
 
   def list_contents(l)
