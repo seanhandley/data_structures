@@ -1,7 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    asymptotic (0.0.7)
+      colored
+      gnuplot
+      peach
+    colored (1.2)
+    gnuplot (2.6.2)
     minitest (5.9.0)
+    peach (0.5.1)
     rmagick (2.15.4)
     ruby-graphviz (1.2.2)
 
@@ -9,6 +16,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  asymptotic
   minitest
   rmagick
   ruby-graphviz
