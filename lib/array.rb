@@ -29,6 +29,13 @@ module DataStructures
       @array.scan(/\[/).count
     end
 
+    def exists?(find)
+      count.times do |i|
+        return true if self[i] == find
+      end
+      false
+    end
+
     def inspect
       output = "["
       count.times do |i|

@@ -19,5 +19,9 @@ module DataStructures
     def length
       @queue.count
     end
+
+    def exists?(find)
+      @queue.include?(find)
+    end
   end
 end

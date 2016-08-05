@@ -44,4 +44,12 @@ class StackTest < Minitest::Test
     end
     assert_equal @items.reverse, output
   end
+
+  def test_exists
+    refute @stack.exists?("foo")
+    @stack.push "foo"
+    assert @stack.exists?("foo")
+    @stack.pop
+    refute @stack.exists?("foo")
+  end
 end

@@ -45,4 +45,12 @@ class QueueTest < Minitest::Test
     end
     assert_equal @shuffled, output
   end
+
+  def test_exists
+    refute @queue.exists?("foo")
+    @queue.enqueue "foo"
+    assert @queue.exists?("foo")
+    @queue.dequeue
+    refute @queue.exists?("foo")
+  end
 end

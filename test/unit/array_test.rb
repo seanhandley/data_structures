@@ -63,4 +63,13 @@ class ArrayTest < Minitest::Test
     @array[2] = "melon"
     assert_equal  "[\"strawberry\", \"peach\", \"melon\"]", @array.to_s
   end
+
+  def test_exists
+    refute @array.exists? "banana"
+    @array.push "banana"
+    @array.push "apple"
+    @array.push "orange"
+    assert @array.exists? "banana"
+    refute @array.exists? "mango"
+  end
 end

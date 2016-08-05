@@ -19,5 +19,9 @@ module DataStructures
     def height
       @stack.count
     end
+
+    def exists?(find)
+      @stack.include?(find)
+    end
   end
 end
