@@ -1,3 +1,4 @@
+require_relative './lib/complexity/binary_tree'
 require_relative './lib/drawing/base'
 require_relative './lib/drawing/binary_tree'
 require_relative './lib/drawing/linked_list'

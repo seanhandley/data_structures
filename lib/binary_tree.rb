@@ -6,6 +6,7 @@ module DataStructures
     
     class Node
       include DataStructures::Drawing::BinaryTree
+      include DataStructures::Complexity::BinaryTree
 
       attr_accessor :element, :left, :right
 
@@ -30,6 +31,12 @@ module DataStructures
         res = false
         traverse_node self, -> (n) { res = true if n.element == find }
         res
+      end
+
+      def size
+        count = 0
+        traverse_node self, -> (_) { count +=1 }
+        count
       end
 
       private

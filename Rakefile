@@ -6,6 +6,11 @@ namespace :test do
     t.libs << 'lib'
     t.pattern = "#{File.dirname(__FILE__)}/test/unit/*_test.rb"
   end
+  Rake::TestTask.new("performance") do |t|
+    t.libs << 'test'
+    t.libs << 'lib'
+    t.pattern = "#{File.dirname(__FILE__)}/test/performance/*_test.rb"
+  end
 end
 
 desc "Run tests"
