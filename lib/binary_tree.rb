@@ -28,7 +28,30 @@ module DataStructures
         @graph = GraphViz.new(:G, :type => :digraph)
         @visited = []
         traverse_node(self, create_nodes_and_edges)
-        @graph.output( :png => "binary_tree.png" )
+        @graph.output( :png => next_filename )
+      end
+
+      def animate
+        gif = Magick::ImageList.new
+        base = File.expand_path("../../frames", __FILE__)
+        files = Dir.entries(base).select{|f| f =~ /\d+\.png/}
+        files.reverse.map{|f| Magick::Image::read("#{base}/#{f}").first}.each do |i|
+          gif << i
+        end
+        gif.write("./tree.gif")
+        files.each{|f| File.delete("#{base}/#{f}")}
+      end
+
+      def next_filename
+        base = File.expand_path("../../frames", __FILE__)
+        files = Dir.entries(base).select{|f| f =~ /\d+\.png/}
+        numbers = files.map {|f| f.gsub(".png","").to_i}
+        if numbers.none?
+          "#{base}/1.png"
+        else
+          next_number = numbers.max + 1
+          "#{base}/#{next_number}.png"
+        end
       end
 
       private

@@ -18,12 +18,16 @@ class BinaryTreeTest < Minitest::Test
   end
 
   def test_traverse_in_order
-    @items.each {|i| @tree.insert i}
+    @items.each {|i| @tree.insert(i)}
     assert_equal @tree.traverse, @items.sort
   end
 
   # def test_draw
-  #   @items.each {|i| @tree.insert i}
-  #   @tree.draw
+  #   @items.each {|i| @tree.insert(i); @tree.draw}
+  # end
+
+  # def test_animate
+  #   @items.each {|i| @tree.insert(i); @tree.draw}
+  #   @tree.animate
   # end
 end
