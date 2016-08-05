@@ -22,6 +22,13 @@ class BinaryTreeTest < Minitest::Test
     assert_equal @tree.traverse, @items.sort
   end
 
+  def test_exists
+    refute @tree.exists?(5)
+    @items.each {|i| @tree.insert(i)}
+    assert @tree.exists?(5)
+    refute @tree.exists?(533)
+  end
+
   def test_draw
     @items = [5, 8, 6, 10, 3, 9, 7, 2, 1, 4]
     @items.each {|i| @tree.insert(i)}

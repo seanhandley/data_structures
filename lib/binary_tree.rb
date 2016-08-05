@@ -26,6 +26,12 @@ module DataStructures
         insert_element(self, e)
       end
 
+      def exists?(find)
+        res = false
+        traverse_node self, -> (n) { res = true if n.element == find }
+        res
+      end
+
       private
 
       def traverse_node(node, action)
