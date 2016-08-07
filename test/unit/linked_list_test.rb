@@ -48,7 +48,7 @@ class LinkedListTest < Minitest::Test
 
   def list_contents(l)
     contains = []
-    l.traverse -> (e) { contains << e }
+    l.traverse {|e| contains << e }
     contains
   end
 end

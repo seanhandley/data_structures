@@ -23,18 +23,16 @@ module DataStructures
         el.value = nil
       end
 
-      def traverse(action)
+      def traverse(&blk)
         el = self
         while(el) do
-          action.call(el.value) if el.value
+          yield el.value if el.value
           el = el.link
         end
       end
 
       def exists?(find)
-        res = false
-        traverse -> (e) { res = true if e == find }
-        res
+        traverse {|e| return true if e == find }
       end
     end
   end
