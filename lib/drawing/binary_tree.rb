@@ -6,12 +6,7 @@ module DataStructures
       def draw
         @graph = GraphViz.new(:G, :type => :digraph)
         @visited = []
-        traverse_node(self, create_nodes_and_edges)
-        @graph.output( :png => next_filename )
-      end
-
-      def create_nodes_and_edges
-        -> (node) {
+        traverse_node(self) do |node|
           root, left, right = nil, nil, nil
           if node.element
             root = @graph.add_nodes(node.element.to_s)
@@ -30,7 +25,8 @@ module DataStructures
             @visited << node.right.element.to_s unless @visited.include?(node.right.element.to_s)
             @graph.add_edges(root, right)
           end
-        }
+        end
+        @graph.output( :png => next_filename )
       end
     end
   end
