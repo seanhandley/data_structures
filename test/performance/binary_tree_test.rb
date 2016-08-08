@@ -1,47 +1,49 @@
 require 'test_helper'
 
 class TestBinaryTree < Minitest::Benchmark
+
+  def self.bench_range
+    [128, 256, 512, 1024, 2048, 4096, 8192]
+  end
+
   def setup
-    @trees = Hash.new
-    Minitest::Benchmark.bench_range.each do |n|
-      @trees[n]   = new_tree(n)
+    @perfect_trees  = Hash.new
+    @worst_trees    = Hash.new
+    TestBinaryTree.bench_range.each do |n|
+      @perfect_trees[n]   = new_tree(perfect_tree(n))
+      @worst_trees[n]     = new_tree((1..n).to_a)
     end
-    @odds  = (1..200).select{|n| n.odd?}
-    @evens = (1..200).select{|n| n.even?}
   end
 
   def bench_tree_exists_best_case
     assert_performance_logarithmic 0.7 do |n|
-      @evens.each {|x| @trees[n].exists?(x) }
+      @perfect_trees[n].exists?(n)
     end
   end
 
   def bench_tree_exists_worst_case
-    @trees = Hash.new
-    Minitest::Benchmark.bench_range.each do |n|
-      @trees[n]   = new_tree(n, false)
-    end
-    assert_performance_linear 0.99 do |n|
-      @trees[n].exists?(1000000000000)
+    assert_performance_linear 0.9 do |n|
+      @worst_trees[n].exists?(n)
     end
   end
 
-  def bench_tree_insert
-    assert_performance_logarithmic 0.7 do |n|
-      @odds.each {|x| @trees[n].insert(x) }
+  def bench_tree_insert_best_case
+    assert_performance_constant 0.9 do |n|
+      @perfect_trees[n].insert(n+1)
+    end
+  end
+
+  def bench_tree_insert_worst_case
+    assert_performance_linear 0.9 do |n|
+      @worst_trees[n].insert(n+1)
     end
   end
 
   private
 
-  def new_tree(size, shuffle=true)
+  def new_tree(inputs)
     tree = DataStructures::BinaryTree.new
-    inputs = (1..size*2).to_a
-    inputs.select! {|n| n.even?}
-    inputs.shuffle! if shuffle
-    inputs.each do |n|
-      tree.insert n
-    end
+    inputs.each {|n| tree.insert n}
     tree
   end
 end
