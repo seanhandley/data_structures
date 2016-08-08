@@ -30,13 +30,9 @@ class BinaryTreeTest < Minitest::Test
   end
 
   def test_draw
-    @items = [5, 8, 6, 10, 3, 9, 7, 2, 1, 4]
+    @items = perfect_tree(100)
     @items.each {|i| @tree.insert(i)}
     @tree.draw
   end
 
-  # def test_animate
-  #   @items.each {|i| @tree.insert(i); @tree.draw}
-  #   @tree.animate("./tree.gif")
-  # end
 end
