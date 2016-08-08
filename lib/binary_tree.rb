@@ -16,7 +16,7 @@ module DataStructures
 
       def traverse
         @traversal = []
-        traverse_node(self) {|node| @traversal << node.element }
+        traverse_node {|node| @traversal << node.element }
         @traversal
       end
 
@@ -25,19 +25,19 @@ module DataStructures
       end
 
       def exists?(find)
-        traverse_node(self) {|n| return true if n.element == find }
+        traverse_node {|n| return true if n.element == find }
         false
       end
 
       def size
         count = 0
-        traverse_node(self) { count +=1 }
+        traverse_node { count +=1 }
         count
       end
 
       private
 
-      def traverse_node(node, &blk)
+      def traverse_node(node=self, &blk)
         return unless node
         traverse_node(node.left, &blk)
         yield node
