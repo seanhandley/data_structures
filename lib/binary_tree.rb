@@ -35,6 +35,11 @@ module DataStructures
         count
       end
 
+      def height
+        children = [left, right].compact
+        children.empty? ? 1 : children.collect {|n| n.height + 1 }.max
+      end
+
       private
 
       def traverse_node(node=self, &blk)

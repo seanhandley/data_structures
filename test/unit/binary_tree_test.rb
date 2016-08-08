@@ -35,4 +35,16 @@ class BinaryTreeTest < Minitest::Test
     @tree.draw
   end
 
+  def test_height_perfect
+    @items = perfect_tree(100)
+    @items.each {|i| @tree.insert(i)}
+    assert_equal 7, @tree.height
+  end
+
+  def test_height_worst
+    @items = (1..100).to_a
+    @items.each {|i| @tree.insert(i)}
+    assert_equal 100, @tree.height
+  end
+
 end
